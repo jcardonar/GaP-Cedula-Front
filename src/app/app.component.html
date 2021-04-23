@@ -1,35 +1,25 @@
-<div class = "center">
+<div class="div" style = "margin-bottom: 20px">
     <h1>Subir PDF de la cédula</h1>
 </div>
 
-<div class = "center">
-<input 
-    style = "display: none" 
-    type = "file" 
-    (change) = "onFileSelected($event)"
-    #FileInput>
+<div class="center">
+    <input style="display: none" type="file" (change)="onFileSelected($event)" #FileInput>
 
-    <button mat-raised-button (click) = "FileInput.click()">Elegir archivo</button>
-</div>
-
-<div class = "center">
-    {{fileName || "No se ha subido ningún archivo"}}
-    <button mat-mini-fab color="primary" class="upload-btn" 
-        (click) = "onUpload()">
+    <button mat-raised-button (click)="FileInput.click()">Elegir archivo</button>
+    <button mat-mini-fab color="primary" class="upload-btn" (click)="onUpload()">
         <mat-icon>file_upload</mat-icon>
     </button>
 </div>
 
+<div class="center" style="margin: 10px">
+    {{fileName || "No se ha subido ningún archivo"}}
+</div>
 
-
-<!-- <div class="progress">
-
-    <mat-progress-bar class="progress-bar" mode="determinate"
-                      [value]="uploadProgress" *ngIf="uploadProgress">
-  
-    </mat-progress-bar>
-  
-    <mat-icon class="cancel-upload" (click)="cancelUpload()" 
-              *ngIf="uploadProgress">delete_forever</mat-icon>
-  
-  </div> -->
+<div class = "center" style = "margin: 30px">
+    <mat-card>
+        <mat-card-header>Los datos obetnidos son:</mat-card-header>
+        <mat-card-content>
+            <pre>{{cedula | json}}</pre>
+        </mat-card-content>
+    </mat-card>  
+</div>

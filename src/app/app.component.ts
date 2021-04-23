@@ -3,6 +3,7 @@ import { Cedula } from './Models/cedula';
 import { RequestCedula } from './Models/request-cedula';
 import { AppServiceService } from './services/app-service.service';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -24,22 +25,23 @@ export class AppComponent {
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = () => {
-      console.log(reader.result)
+      // console.log(reader.result)
       const file = reader.result;
       const string = JSON.stringify(file);
       this.selectedFile = JSON.parse(string)
     };
   }
   onUpload() {
-    this.requestCedula=new RequestCedula();
+    this.requestCedula = new RequestCedula();
     let data = this.selectedFile.split(",")[1];
-    this.requestCedula.base64String=data;
-    console.log("Data="+JSON.stringify(this.requestCedula));
+    this.requestCedula.base64String = data;
+    // console.log("Data="+JSON.stringify(this.requestCedula));
     this.appservice.post(this.requestCedula).subscribe(resp1 => {
       this.cedula = resp1;
-      let nombre = this.cedula.nombre;
+      console.log(this.cedula);
       // let activo = funcionario.activo;
     })
+
   }
 
 }

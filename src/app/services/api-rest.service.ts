@@ -9,16 +9,16 @@ import { Observable, throwError, BehaviorSubject } from "rxjs";
 export class ApiRestService {
 
   constructor() { }
-  apiUrl= environment.apiUrl;
+  apiUrl = environment.apiUrl;
 
   httpOptions = {
-    headers:new HttpHeaders({
-      'Content-Type':'application/json'
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
     }),
-}
+  }
 
-handleError(error: HttpErrorResponse) {
-  return throwError(error);
-}
+  handleError(error: HttpErrorResponse) {
+    return throwError(error);
+  }
 
 }
