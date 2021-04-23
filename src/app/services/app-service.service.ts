@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { ApiRestService } from "./api-rest.service"
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Cedula } from '../Models/cedula';
+import { RequestCedula } from '../Models/request-cedula';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,7 @@ export class AppServiceService {
           this.apiRestService.httpOptions);
   }*/
 
-  post(cedula:string){
+  post(cedula:RequestCedula){
     return this.http.post<Cedula>(this.endPoint, cedula, this.apiRestService.httpOptions);
 }
 }

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Cedula } from './Models/cedula';
+import { RequestCedula } from './Models/request-cedula';
 import { AppServiceService } from './services/app-service.service';
 
 @Component({
@@ -12,6 +13,7 @@ export class AppComponent {
   selectedFile: any = null;
   cedula: Cedula;
   fileName = "";
+  requestCedula: RequestCedula;
 
 
   constructor(private appservice: AppServiceService) { }
@@ -29,7 +31,11 @@ export class AppComponent {
     };
   }
   onUpload() {
-    this.appservice.post(this.selectedFile).subscribe(resp1 => {
+    this.requestCedula=new RequestCedula();
+    let data = this.selectedFile.split(",")[1];
+    this.requestCedula.base64String=data;
+    console.log("Data="+JSON.stringify(this.requestCedula));
+    this.appservice.post(this.requestCedula).subscribe(resp1 => {
       this.cedula = resp1;
       let nombre = this.cedula.nombre;
       // let activo = funcionario.activo;
